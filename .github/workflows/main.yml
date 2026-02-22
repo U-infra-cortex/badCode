@@ -65,6 +65,8 @@ jobs:
             code scan --directory "${{ github.workspace }}" \
             --branch main --repo-id "${{ github.repository }}" \
             --source "GITHUB_ACTIONS" \
-            --output json \
-            --output-file-path $GITHUB_STEP_SUMMARY
+            --output cli \
+            --compact > scan_result.txt
+          cat scan_result.txt
+          head -c 1000000 scan_result.txt > $GITHUB_STEP_SUMMARY
          

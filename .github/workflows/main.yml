@@ -65,12 +65,14 @@ jobs:
             code scan --directory "${{ github.workspace }}" \
             --branch main --repo-id "${{ github.repository }}" \
             --source "GITHUB_ACTIONS" \
-            --output json \
-            --output-file-path .result.json
+            --output json \ # 결과를 JSON 형식으로 생성
+            --output-file-path .result.json # 스캔 결과를 .result.json 파일로 저장
+# (아래는 GitHub Actions Summary 탭에 결과를 직접 출력할 때 사용하는 옵션입니다)
 #            --output cli \
 #            --compact > scan_result.txt
 #          cat scan_result.txt
 #          head -c 1000000 scan_result.txt > $GITHUB_STEP_SUMMARY
-      - name: Show scan result
+
+      - name: Show scan result # 생성된 JSON 결과를 로그창에 출력하는 단계
         run: cat .result.json
          

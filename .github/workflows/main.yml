@@ -30,6 +30,11 @@ jobs:
           distribution: temurin
           java-version: "11"
 
+      - name: "Set up Node.js (SCA 스캔 요구: Node.js 22 이상)"
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
       - name: Install Cortex CLI dependencies (libhs.so.5)
         run: |
           sudo apt-get update
@@ -60,5 +65,5 @@ jobs:
             code scan --directory "${{ github.workspace }}" \
             --branch main --repo-id "${{ github.repository }}" \
             --source "GITHUB_ACTIONS" \
-            --output json --output-file-path ./output.json --upload-mode no-code
+            --outputf json --output-file-path ./output.json --upload-mode no-code
          

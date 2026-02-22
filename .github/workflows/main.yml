@@ -65,5 +65,5 @@ jobs:
             code scan --directory "${{ github.workspace }}" \
             --branch main --repo-id "${{ github.repository }}" \
             --source "GITHUB_ACTIONS" \
-            --output json --output-file-path ./output.json 
+            --output json
          

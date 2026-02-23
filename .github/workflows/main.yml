@@ -3,7 +3,7 @@ name: Code Scan with Cortex
 on:
   push:
     branches:
-      - '**'
+      - main
   workflow_dispatch:
 
 env:
@@ -63,7 +63,7 @@ jobs:
             --api-key "${{ env.CORTEX_API_KEY }}" \
             --api-key-id "${{ env.CORTEX_API_KEY_ID }}" \
             code scan --directory "${{ github.workspace }}" \
-            --branch ${{ github.ref_name }} --repo-id "${{ github.repository }}" \
+            --branch main --repo-id "${{ github.repository }}" \
             --source "GITHUB_ACTIONS" \
             --output json \
             --output-file-path .result.json
